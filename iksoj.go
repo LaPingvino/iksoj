@@ -1,6 +1,5 @@
 package main
 
-//import "fmt"
 import "flag"
 import "strings"
 import "bufio"
@@ -48,13 +47,15 @@ func konvertifluon(fluo *bufio.Reader, kien io.Writer, iksen bool) {
 }
 
 func main() {
-	var direkto *bool
-	//var enigo string
-
-	direkto = flag.Bool("iksen", false, "Traduki al iksoj")
-
+	direkto := flag.Bool("iksen", false, "Traduki al iksoj. Defaŭlte tradukiĝas al veraj ĉapeloj.")
 	flag.Parse()
-	konvertifluon(bufio.NewReader(os.Stdin), os.Stdout, *direkto)
-	//enigo = strings.Join(flag.Args()," ")
-	//fmt.Print(konverti(enigo,*direkto))
+
+	enigo := flag.Arg(0)
+
+	dosiero, err := os.Open(enigo)
+	if err != nil {
+		dosiero = os.Stdin
+	}
+	konvertifluon(bufio.NewReader(dosiero), os.Stdout, *direkto)
+	println(dosiero)
 }
