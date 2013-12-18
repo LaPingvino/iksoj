@@ -1,5 +1,5 @@
 # iksoj
 
-Rapida kaj facila maniero transformi la iksojn en viaj dokumentoj al veraj cxapeloj
+Rapida kaj facila maniero transformi la iksojn en viaj dokumentoj al veraj ĉapeloj
 
-Ankoraux nenio menciindas...
+Ankoraŭ nenio menciindas...
