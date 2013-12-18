@@ -57,5 +57,4 @@ func main() {
 		dosiero = os.Stdin
 	}
 	konvertifluon(bufio.NewReader(dosiero), os.Stdout, *direkto)
-	println(dosiero)
 }
