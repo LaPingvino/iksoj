@@ -1,0 +1,4 @@
+iksoj
+*.tar.*
+src/
+pkg/

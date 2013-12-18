@@ -1,11 +1,10 @@
+installto?=/usr/bin
+
 all:
 	go build iksoj.go
 
 install:
-	install -Dm755 iksoj /usr/bin/iksoj
-
-prepare:
-	install -Dm755 iksoj usr/bin/iksoj
+	install -Dm755 iksoj $(installto)/iksoj
 
 uninstall:
 	rm /usr/bin/iksoj

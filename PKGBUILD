@@ -8,8 +8,8 @@ arch=('i686' 'x86_64')
 url=http://github.com/LaPingvino/iksoj/
 license=('CC0')
 makedepends=('go')
-source=("master.zip::https://github.com/LaPingvino/iksoj/archive/master.zip")
-md5sums=('266b3c00ec43683feb5e18fbaeed6b44')
+source=("${pkgname}-${pkgver}.tar.gz::http://github.com/LaPingvino/iksoj/archive/${pkgver}.tar.gz")
+md5sums=('808d77e6e83999ee7bab62e65c5bf69b')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -18,6 +18,7 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	make prepare
+	sed -i "s@/usr/bin@${pkgdir}/usr/bin@" Makefile
+	make install
 }
 
