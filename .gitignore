@@ -2,3 +2,4 @@ iksoj
 *.tar.*
 src/
 pkg/
+*.swp
