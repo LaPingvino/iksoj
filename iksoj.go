@@ -41,21 +41,41 @@ func main() {
 	flag.Parse()
 
 	enigo := flag.Arg(0)
+	portempujo := "/tmp/iksoj." + strconv.Itoa(os.Getpid())
 
 	dosiero, err := os.Open(enigo)
 	if err != nil {
 		dosiero = os.Stdin
 	}
 
-	var kien io.ReadWriter
+	var kien *os.File
 	if *mimem {
-		kien, err = os.Create("/tmp/iksoj" + strconv.Itoa(os.Getpid()))
+		kien, err = os.Create(portempujo)
 		if err != nil {panic("Oops, tempfile already exists!")}
 	} else {
 		kien = os.Stdout
 	}
 	konvertifluon(bufio.NewReader(dosiero), kien, *direkto)
+	dosiero.Close()
+	kien.Close()
+
 	if *mimem {
-		bufio.NewReader(kien).WriteTo(dosiero)
+		detie, err := os.Open(portempujo)
+		if err != nil {
+			println(err)
+			panic("Sorry, I don't manage to open temp file...")
+		}
+		err = os.Remove(enigo)
+		if err != nil {panic("Cannot remove file to copy it back")}
+		tien, err := os.Create(enigo)
+		if err != nil {
+			println(err)
+			panic("Sorry, I don't manage to open destination file...")
+		}
+		kiom, err := io.Copy(tien, detie)
+		if err != nil {
+			println(kiom)
+			panic("Couldn't copy all of the file...")
+		}
 	}
 }
