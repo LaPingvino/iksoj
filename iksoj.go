@@ -36,7 +36,7 @@ func konvertifluon(fluo *bufio.Reader, kien io.Writer, iksen bool) {
 }
 
 func main() {
-	direkto := flag.Bool("x", false, "Traduki al iksoj. Convert to x-system.)")
+	direkto := flag.Bool("x", false, "Traduki al iksoj. Convert to x-system.")
 	mimem := flag.Bool("i", false, "Skribi al la dosiero mem. In-place conversion of input file.")
 	flag.Parse()
 
