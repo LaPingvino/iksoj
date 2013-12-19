@@ -5,6 +5,7 @@ import "strings"
 import "bufio"
 import "os"
 import "io"
+import "strconv"
 
 func konverti(de string, iksen bool) string {
 	a := 0
@@ -36,6 +37,7 @@ func konvertifluon(fluo *bufio.Reader, kien io.Writer, iksen bool) {
 
 func main() {
 	direkto := flag.Bool("x", false, "Traduki al iksoj. Convert to x-system.)")
+	mimem := flag.Bool("i", false, "Skribi al la dosiero mem. In-place conversion of input file.")
 	flag.Parse()
 
 	enigo := flag.Arg(0)
@@ -44,5 +46,16 @@ func main() {
 	if err != nil {
 		dosiero = os.Stdin
 	}
-	konvertifluon(bufio.NewReader(dosiero), os.Stdout, *direkto)
+
+	var kien io.ReadWriter
+	if *mimem {
+		kien, err = os.Create("/tmp/iksoj" + strconv.Itoa(os.Getpid()))
+		if err != nil {panic("Oops, tempfile already exists!")}
+	} else {
+		kien = os.Stdout
+	}
+	konvertifluon(bufio.NewReader(dosiero), kien, *direkto)
+	if *mimem {
+		bufio.NewReader(kien).WriteTo(dosiero)
+	}
 }
