@@ -23,14 +23,14 @@ func konverti(de string, iksen bool) string {
 		{"CX", "Ĉ"}, {"GX", "Ĝ"}, {"HX", "Ĥ"},
 		{"JX", "Ĵ"}, {"SX", "Ŝ"}, {"UX", "Ŭ"},
 	}
-	for i := 0; i<18; i++ {
+	for i := 0; i < 18; i++ {
 		de = strings.Replace(de, tabelo[i][a], tabelo[i][b], -1)
 	}
 	return de
 }
 
 func konvertifluon(fluo *bufio.Reader, kien io.Writer, iksen bool) {
-	for i, err:=fluo.ReadString('\n'); err == nil; i, err=fluo.ReadString('\n'){
+	for i, err := fluo.ReadString('\n'); err == nil; i, err = fluo.ReadString('\n') {
 		io.WriteString(kien, konverti(i, iksen))
 	}
 }
@@ -51,7 +51,9 @@ func main() {
 	var kien *os.File
 	if *mimem {
 		kien, err = os.Create(portempujo)
-		if err != nil {panic("Oops, tempfile already exists!")}
+		if err != nil {
+			panic("Oops, tempfile already exists!")
+		}
 	} else {
 		kien = os.Stdout
 	}
@@ -66,7 +68,9 @@ func main() {
 			panic("Sorry, I don't manage to open temp file...")
 		}
 		err = os.Remove(enigo)
-		if err != nil {panic("Cannot remove file to copy it back")}
+		if err != nil {
+			panic("Cannot remove file to copy it back")
+		}
 		tien, err := os.Create(enigo)
 		if err != nil {
 			println(err)
