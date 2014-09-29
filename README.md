@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/lapingvino/iksoj.png?label=ready&title=Ready)](https://waffle.io/lapingvino/iksoj)
 # iksoj
 
 Rapida kaj facila maniero transformi la iksojn en viaj dokumentoj al veraj ĉapeloj
