@@ -2,6 +2,8 @@
 [![Join the chat at https://gitter.im/LaPingvino/iksoj](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/LaPingvino/iksoj?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 # iksoj
 
+[![Join the chat at https://gitter.im/LaPingvino/iksoj](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/LaPingvino/iksoj?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Rapida kaj facila maniero transformi la iksojn en viaj dokumentoj al veraj ĉapeloj
 
 ## Kiel uzi?
